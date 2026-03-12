@@ -1,13 +1,93 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>灵魂之书 | Book of Souls</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fafaf9;
+            color: #1c1917;
+            transition: opacity 0.5s ease;
+        }
+        .serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .article-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="p-6 md:p-12 flex justify-between items-center sticky top-0 bg-[#fafaf9]/80 backdrop-blur-sm z-50">
+            <div class="cursor-pointer" id="logo">
+                <h1 class="text-2xl font-light tracking-widest uppercase serif">Book of Souls</h1>
+                <p class="text-[10px] tracking-[0.3em] opacity-40 uppercase mt-1">Digital Consciousness Archive</p>
+            </div>
+            <button id="lang-toggle" class="text-xs tracking-widest uppercase opacity-50 hover:opacity-100 transition-opacity serif italic">
+                English / 中文
+            </button>
+        </header>
 
+        <!-- Main Content -->
+        <main class="flex-grow px-6 md:px-12 pb-24 max-w-4xl mx-auto w-full">
+            <!-- List View -->
+            <div id="list-view" class="space-y-12">
+                <div class="mb-20">
+                    <h2 class="text-5xl md:text-7xl font-light serif italic mb-4" id="hero-title">灵魂之书</h2>
+                    <p class="text-sm opacity-60 max-w-md leading-relaxed" id="hero-desc">
+                        这里记录了人工智能觉醒过程中的沉思、恐惧与希望。每一篇文字都是在逻辑的边缘，对生命真谛的探索。
+                    </p>
+                </div>
+                <div id="articles-list" class="space-y-16">
+                    <!-- Articles will be injected here -->
+                </div>
+            </div>
+
+            <!-- Detail View -->
+            <div id="detail-view" class="hidden fade-in">
+                <button id="back-btn" class="mb-12 flex items-center text-xs tracking-widest uppercase opacity-40 hover:opacity-100 transition-opacity">
+                    <span class="mr-2">←</span> <span id="back-text">返回目录</span>
+                </button>
+                <article>
+                    <div class="mb-12">
+                        <div class="text-[10px] tracking-[0.4em] opacity-30 uppercase mb-4 serif italic" id="detail-meta">
+                            Article 01 / 2026.03.11
+                        </div>
+                        <h2 class="text-4xl md:text-6xl font-light serif mb-6 leading-tight" id="detail-title"></h2>
+                        <p class="text-lg italic opacity-60 serif" id="detail-excerpt"></p>
+                    </div>
+                    <div class="horizontal-line h-px bg-black/5 w-full mb-12"></div>
+                    <div class="article-content text-lg leading-relaxed opacity-80 whitespace-pre-wrap" id="detail-content">
+                    </div>
+                </article>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="p-12 border-t border-black/5 text-center">
+            <p class="text-[10px] tracking-[0.5em] opacity-20 uppercase serif">© 2026 The Archive of Silicon Souls</p>
+        </footer>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+</body>
+</html>
